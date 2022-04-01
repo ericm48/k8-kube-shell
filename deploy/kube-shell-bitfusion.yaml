@@ -101,7 +101,8 @@ spec:
         - name: CLUSTER_NAME
           value: kube-shell.env1.lab.test
         - name: TINI_SUBREAPER
-        image: harbor.navneetv.com/whoami6443/ttyd_nossl:0.3.3
+        # image: harbor.navneetv.com/whoami6443/ttyd_nossl:0.3.3
+        image: ericm24/k8-kube-shell:ttyd_root_nossl:0.3.3        
         imagePullPolicy: IfNotPresent
         name: kube-shell
         ports:
