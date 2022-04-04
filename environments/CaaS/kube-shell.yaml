@@ -101,8 +101,7 @@ spec:
         - name: CLUSTER_NAME
           value: kube-shell.env1.lab.test
         - name: TINI_SUBREAPER
-        #image: harbor.navneetv.com/whoami6443/ttyd_nossl:0.3.3
-        image: ericm24/k8-kube-shell:ttyd_root_nossl-0.3.4        
+        image: ericm24/k8-kube-shell:ttyd_root_nossl-0.3.5       
         imagePullPolicy: IfNotPresent
         name: kube-shell
         ports:
@@ -117,16 +116,12 @@ spec:
             memory: 64Mi
         securityContext:
         # Run with elevated privilages
-          #readOnlyRootFilesystem: true
-          #allowPrivilegeEscalation: true
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: true
           privileged: true
         volumeMounts:
         - mountPath: /tmp/scratch
           name: cache-volume
-        #- name: config-files
-        #  mountPath: /etc/bitfusion
-        #- name: certificate
-        #  mountPath: /etc/bitfusion/tls
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         stdin: true
@@ -134,18 +129,6 @@ spec:
       volumes:
       - name: cache-volume
         emptyDir: {}
-      #- name: config-files
-      #  projected:
-      #    defaultMode: 0640
-      #    sources:
-      #    - secret:
-      #        name: bitfusion-client-secret-client.yml
-      #    - secret:
-      #        name: bitfusion-client-secret-servers.conf
-      #- name: certificate
-      #  secret:
-      #    secretName: bitfusion-client-secret-ca.crt
-      #    defaultMode: 0640
       dnsPolicy: ClusterFirst
       schedulerName: default-scheduler
       securityContext: {}

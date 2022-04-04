@@ -17,14 +17,6 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y kubectl
 
-#RUN mkdir -p /root/.bitfusion
-#RUN mkdir -p /workspace/bitfusion
-#WORKDIR /workspace/bitfusion
-#COPY ./bitfusion-client-ubuntu2004_4.5.0-4_amd64.deb .
-#RUN apt-get update \
-#    && apt-get install -y ./bitfusion-client-ubuntu2004_4.5.0-4_amd64.deb
-
-
 ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /sbin/tini
 RUN chmod +x /sbin/tini
 
